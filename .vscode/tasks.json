@@ -1,0 +1,76 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            // Ctrl+Shift+B runs this. Same flags as the harness.c header
+            // comment, plus -g so the debugger has symbols to work with.
+            "label": "build harness",
+            "type": "shell",
+            "command": "gcc",
+            "args": [
+                "-std=c99",
+                "-Wall",
+                "-Wextra",
+                "-pedantic",
+                "-g",
+                "-o",
+                "harness",
+                "harness.c"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "presentation": {
+                "reveal": "always",
+                "panel": "shared",
+                "clear": true
+            },
+            "detail": "gcc -std=c99 -Wall -Wextra -pedantic -g -o harness harness.c"
+        },
+        {
+            "label": "run harness",
+            "type": "shell",
+            "command": "./harness",
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "dependsOn": "build harness",
+            "problemMatcher": [],
+            "presentation": {
+                "reveal": "always",
+                "panel": "dedicated",
+                "clear": true
+            },
+            "detail": "Build, then start an interactive session."
+        },
+        {
+            // 'bash test.sh' rather than './test.sh': files on /mnt/c often
+            // lack the executable bit, which would make ./test.sh fail.
+            "label": "run tests",
+            "type": "shell",
+            "command": "bash test.sh",
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "dependsOn": "build harness",
+            "group": {
+                "kind": "test",
+                "isDefault": true
+            },
+            "problemMatcher": [],
+            "presentation": {
+                "reveal": "always",
+                "panel": "shared",
+                "clear": true
+            },
+            "detail": "Build, then run the project test script."
+        }
+    ]
+}

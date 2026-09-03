@@ -1,0 +1,10 @@
+{
+    // Without this VS Code guesses C++ for .h files, which pulls in a
+    // different set of IntelliSense rules than the compiler actually uses.
+    "files.associations": {
+        "*.c": "c",
+        "*.h": "c"
+    },
+    "C_Cpp.default.cStandard": "c99",
+    "C_Cpp.errorSquiggles": "enabled"
+}

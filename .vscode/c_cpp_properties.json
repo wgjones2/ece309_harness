@@ -1,0 +1,42 @@
+{
+    "version": 4,
+    "configurations": [
+        {
+            // Used when the folder is opened in a WSL window (Remote: WSL).
+            // cpptools runs gcc here to learn the real system include paths,
+            // so <stdio.h> and friends resolve exactly the way the build does.
+            "name": "Linux",
+            "compilerPath": "/usr/bin/gcc",
+            "compilerArgs": [
+                "-std=c99",
+                "-Wall",
+                "-Wextra",
+                "-pedantic"
+            ],
+            "cStandard": "c99",
+            "intelliSenseMode": "linux-gcc-x64",
+            "includePath": [
+                "${workspaceFolder}/**"
+            ],
+            "defines": []
+        },
+        {
+            // Fallback for the plain Windows window, where no compiler exists.
+            // There is nothing to query, so the glibc headers are listed by
+            // hand over the WSL network share. Editing works; building does not.
+            // Reopen in WSL (see README) for the real setup.
+            "name": "Win32",
+            "compilerPath": "",
+            "cStandard": "c99",
+            "intelliSenseMode": "linux-gcc-x64",
+            "includePath": [
+                "${workspaceFolder}/**",
+                "//wsl.localhost/Ubuntu/usr/lib/gcc/x86_64-linux-gnu/15/include",
+                "//wsl.localhost/Ubuntu/usr/local/include",
+                "//wsl.localhost/Ubuntu/usr/include/x86_64-linux-gnu",
+                "//wsl.localhost/Ubuntu/usr/include"
+            ],
+            "defines": []
+        }
+    ]
+}
